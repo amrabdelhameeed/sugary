@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.2 <4.0.0'
+  sdk: '>=3.2.3 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -28,35 +28,44 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cached_network_image: ^3.3.1
+  carousel_slider: ^4.2.1
+  cloud_firestore: any
+  cupertino_icons: ^1.0.6
+  dio: ^5.4.3+1
+  firebase_auth: any
+  firebase_core: any
+  fl_chart: ^0.68.0
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.6
   flutter_bloc: ^8.1.5
+  flutter_local_notifications: ^16.3.0
   flutter_screenutil: ^5.9.0
-  carousel_slider: ^4.2.1
-  image_picker: ^1.1.0
+  flutter_svg: ^2.0.10+1
+  get_it: any
+  go_router: ^14.0.2
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  image_picker: any
+  intl: ^0.19.0
+  # location: ^6.0.2
   permission_handler: ^11.3.1
+  pretty_dio_logger: ^1.3.1
   url_launcher: ^6.2.6
   whatsapp_unilink: ^2.1.0
+  workmanager: ^0.5.2
 
 dev_dependencies:
+  build_runner: ^2.4.7
+  flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  hive_generator: ^2.0.1
+  json_serializable: ^6.7.1
+  path_provider: ^2.1.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -67,45 +76,22 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/im/pic1.jpg
-    - assets/im/pic2.jpg
-    - assets/im/pic3.jpg
-    - assets/im/00.webp
-    - assets/im/progress.png
-    - assets/im/Vector.png
-    - assets/im/Vector (1).png
-    - assets/im/homeicon.png
-    - assets/im/Sleeping in Bed.png
-    - assets/im/Track and Field.png
-    - assets/im/Water Glass.png
-    - assets/im/Accessibility.png
-    - assets/im/subblies.png
-    - assets/im/emergency.png
-    - assets/im/folder.png
-    - assets/im/laboratory.png
-    - assets/im/midecine.png
-    - assets/im/nurse.png
-    - assets/im/tips.png
-    - assets/im/1home2.png
-    - assets/im/2home2.png
-    - assets/im/3home2.png
-    - assets/im/Gallery.png
-
+    - assets/personal_details/
+    - assets/im/
+    - assets/app/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: inria
+      fonts:
+        - asset: assets/fonts/inria.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
@@ -116,3 +102,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/core/constants/
+  filename: app_assets.dart

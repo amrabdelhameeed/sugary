@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "99757126700",
+    "project_id": "sugary-61822",
+    "storage_bucket": "sugary-61822.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99757126700:android:f147c89a6b563747e9cd89",
+        "android_client_info": {
+          "package_name": "com.example.sugar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBAGtZbINN49KlO2nMctkofPzwIgburKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
