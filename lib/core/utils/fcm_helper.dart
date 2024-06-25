@@ -165,7 +165,7 @@ class NotificationHelper {
       color: const Color(0xFF980000),
       colorized: true,
       importance: Importance.max,
-      styleInformation: const BigTextStyleInformation(''),
+      // styleInformation: const BigTextStyleInformation(''),
       // colorized: true,
       priority: Priority.high,
       playSound: true,

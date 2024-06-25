@@ -154,10 +154,12 @@ class MyFolderGlucoseScreen extends StatelessWidget {
                     //   child: Text(dateController.text.isEmpty ? "Select Date" : dateController.text),
                     // ),
                     TextField(
+                      keyboardType: TextInputType.number,
                       onChanged: (value) => newGlucose.read = num.tryParse(value),
                       decoration: const InputDecoration(hintText: "Enter Glucose Read"),
                     ),
                     TextField(
+                      keyboardType: TextInputType.number,
                       onChanged: (value) => newGlucose.insulin = num.tryParse(value),
                       decoration: const InputDecoration(hintText: "Enter Insulin Dose"),
                     ),

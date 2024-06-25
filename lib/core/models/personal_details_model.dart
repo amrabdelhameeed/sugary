@@ -28,4 +28,18 @@ class PersonalDetailsModel {
       'height': height,
     };
   }
+
+  PersonalDetailsModel copyWith({
+    bool? isMale,
+    num? weight,
+    num? age,
+    num? height,
+  }) {
+    return PersonalDetailsModel(
+      isMale: isMale ?? this.isMale,
+      weight: weight ?? this.weight,
+      age: age ?? this.age,
+      height: height ?? this.height,
+    );
+  }
 }

@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import '../../di.dart';
-
 //Dio Helper That's Connect and Talk to API.
 class DioHelper {
-  static final Dio _dio = Dio(BaseOptions(baseUrl: 'http://amrrouterrr.ddns.net:2222/', headers: {'Content-Type': 'application/json'}))
+  // http://amrrouterrr.ddns.net:2222/
+  static final Dio _dio = Dio(BaseOptions(baseUrl: 'http://10.14.60.103:2222/', headers: {'Content-Type': 'application/json'}))
     ..interceptors.add(PrettyDioLogger(error: true, requestBody: true, requestHeader: true, responseBody: true, responseHeader: true));
 
   //This Function to call API and get Some Data based on url(End Points) and Headers needed in API to get the Specific Data.

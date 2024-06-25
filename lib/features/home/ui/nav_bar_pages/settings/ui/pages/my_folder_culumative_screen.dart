@@ -149,6 +149,7 @@ class MyFolderCumulativeScreen extends StatelessWidget {
                 //   child: Text(dateController.text.isEmpty ? "Select Date" : dateController.text),
                 // ),
                 TextField(
+                  keyboardType: TextInputType.number,
                   onChanged: (value) => newEntry.read = num.tryParse(value),
                   decoration: InputDecoration(hintText: "Enter Reading"),
                 ),

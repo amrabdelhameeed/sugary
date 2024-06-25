@@ -16,5 +16,11 @@ final class ProfileDeleteSuccess extends ProfileState {}
 final class ProfileError extends ProfileState {
   final String error;
 
-  ProfileError({required this.error});
+  ProfileError(this.error);
+}
+
+class ProfileLoaded extends ProfileState {
+  final PersonalDetailsModel personalDetailsModel;
+
+  ProfileLoaded(this.personalDetailsModel);
 }

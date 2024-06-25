@@ -10,6 +10,7 @@ import 'package:sugar/core/constants/app_colors.dart';
 import 'package:sugar/core/constants/app_padings.dart';
 import 'package:sugar/core/constants/app_routes.dart';
 import 'package:sugar/core/database_provider/app_services_database_provider.dart';
+import 'package:sugar/core/network/api_services.dart';
 import 'package:sugar/core/utils/dio_helper.dart';
 
 class HomeWrapper extends StatefulWidget {
@@ -115,7 +116,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
                                   child: GestureDetector(
                                 onTap: () async {
                                   // Pick the image from the camera
-                                  final pickedFile = await ImagePicker().pickImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear);
+                                  final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery, preferredCameraDevice: CameraDevice.rear);
 
                                   if (pickedFile != null) {
                                     // Read the file as bytes
@@ -124,7 +125,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
                                     final String base64Image = base64Encode(bytes);
 
                                     // Use Dio to send the base64 string to your server
-                                    await DioHelper.postData(url: 'img', data: {'image': base64Image}).then((response) {
+                                    await ApiServices.fetchEyeModel(base64Image).then((response) {
                                       // Handle the response from the server
                                       print("Image uploaded!");
                                       print(response.data.toString());
@@ -133,7 +134,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
                                         context: context,
                                         builder: (context) {
                                           return AlertDialog.adaptive(
-                                            content: Text("${response.data["prediction"] == "No_DR" ? "You are fine :)" : "You have to go to the doctor now :("}"),
+                                            content: Text(response.data["prediction"] == "No_DR" ? "You are fine ☺" : "You have to go to the doctor now  😔"),
                                           );
                                         },
                                       );
@@ -179,18 +180,36 @@ class _HomeWrapperState extends State<HomeWrapper> {
                                   child: GestureDetector(
                                 onTap: () async {
                                   // await ImagePicker().pickImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.front);
-                                  await DioHelper.getData(url: 'imgg').then(
-                                    (value) {
+                                  // Pick the image from the camera
+                                  final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery, preferredCameraDevice: CameraDevice.rear);
+
+                                  if (pickedFile != null) {
+                                    // Read the file as bytes
+                                    final bytes = await pickedFile.readAsBytes();
+                                    // Encode the file as a base64 string
+                                    final String base64Image = base64Encode(bytes);
+
+                                    // Use Dio to send the base64 string to your server
+                                    await ApiServices.fetchFoodModel(base64Image).then((response) {
+                                      // Handle the response from the server
+                                      print("Image uploaded!");
+                                      print(response.data.toString());
+
                                       showDialog(
                                         context: context,
                                         builder: (context) {
                                           return AlertDialog.adaptive(
-                                            content: Text(value.data.toString()),
+                                            content: Text(response.data["calorie_info"].toString()),
                                           );
                                         },
                                       );
-                                    },
-                                  );
+                                    }).catchError((error) {
+                                      // Handle any errors
+                                      print("Failed to upload image: $error");
+                                    });
+                                  } else {
+                                    print("No image selected.");
+                                  }
                                 },
                                 child: Container(
                                   // margin: AppPadding.bigPadding,

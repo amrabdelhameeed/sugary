@@ -77,7 +77,7 @@ class _MainScreenState extends State<MainScreen> {
                           height: 80.h,
                           width: 150.w,
                           child: GlucoseDBprovider.box.isNotEmpty
-                              ? Image.asset(MessageHelper.getGlucoseMessageImage(GlucoseDBprovider.box.values.last.insulin!.toInt()))
+                              ? Image.asset(MessageHelper.getGlucoseMessageImage(GlucoseDBprovider.box.values.last.read!.toInt()))
                               : Image.asset(Assets.assetsImHomeicon),
                         );
                       },
@@ -95,14 +95,14 @@ class _MainScreenState extends State<MainScreen> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: ValueListenableBuilder(
-                        valueListenable: CumulativeDBprovider.listenable(),
+                        valueListenable: GlucoseDBprovider.listenable(),
                         builder: (context, value, child) {
                           return RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(children: [
                               TextSpan(
-                                  text: CumulativeDBprovider.box.isNotEmpty ? CumulativeDBprovider.box.values.last.read.toString() : "-",
-                                  style: TextStyle(fontSize: 20.sp, color: AppColors.green, fontWeight: FontWeight.bold)),
+                                  text: GlucoseDBprovider.box.isNotEmpty ? GlucoseDBprovider.box.values.last.read.toString() : "-",
+                                  style: TextStyle(fontSize: 20.sp, color: MessageHelper.getGlucoseMessageColor(GlucoseDBprovider.box.values.last.read!.toInt()), fontWeight: FontWeight.bold)),
                               const TextSpan(text: "\n"),
                               TextSpan(text: "ml/dl", style: TextStyle(fontSize: 20.sp, color: Colors.black))
                             ]),
@@ -130,7 +130,7 @@ class _MainScreenState extends State<MainScreen> {
                             valueListenable: GlucoseDBprovider.listenable(),
                             builder: (context, value, child) {
                               return Text(
-                                GlucoseDBprovider.box.isNotEmpty ? MessageHelper.getGlucoseMessage(GlucoseDBprovider.box.values.last.insulin!.toDouble()) : "-",
+                                GlucoseDBprovider.box.isNotEmpty ? MessageHelper.getGlucoseMessage(GlucoseDBprovider.box.values.last.read!.toDouble()) : "-",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,

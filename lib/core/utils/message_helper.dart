@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sugar/core/constants/app_assets.dart';
 
 class MessageHelper {
@@ -45,6 +46,16 @@ class MessageHelper {
       return Assets.assetsImHomeicon;
     } else {
       return Assets.assetsAppHigh;
+    }
+  }
+
+  static Color getGlucoseMessageColor(int glucoseLevel) {
+    if (glucoseLevel < 75) {
+      return Colors.yellow.shade700;
+    } else if (glucoseLevel >= 75 && glucoseLevel <= 130) {
+      return Colors.green;
+    } else {
+      return Colors.red;
     }
   }
 }

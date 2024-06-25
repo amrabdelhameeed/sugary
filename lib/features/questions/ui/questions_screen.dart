@@ -39,9 +39,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.greenaccent,
+      backgroundColor: AppColors.pinkcolor,
       appBar: AppBar(
-        backgroundColor: AppColors.greenaccent,
+        backgroundColor: AppColors.pinkcolor,
         actions: [
           isLoading
               ? const CircularProgressIndicator.adaptive()

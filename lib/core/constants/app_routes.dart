@@ -12,6 +12,8 @@ class AppRoutes {
   static const myFolderGlucose = 'myFolderGlucose';
   static const myFolderCumulative = 'myFolderCumulative';
   static const medicationReminder = 'medicationReminder';
+  static const mealPlanning = 'mealPlanning';
+  static const meal = 'meal';
 
   static const intro = '/intro';
   static const signIn = '/signIn';

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sugar/core/database_provider/app_services_database_provider.dart';
+import 'package:sugar/core/models/meal_model.dart';
 import 'package:sugar/di.dart';
 import 'package:sugar/features/auth/ui/login/login.dart';
 import 'package:sugar/features/auth/ui/register/register.dart';
@@ -10,6 +11,8 @@ import 'package:sugar/features/home/ui/home_wrapper.dart';
 import 'package:sugar/features/home/ui/nav_bar_pages/main/ui/main_screen.dart';
 import 'package:sugar/features/home/ui/nav_bar_pages/profile/ui/profile_screen.dart';
 import 'package:sugar/features/home/ui/nav_bar_pages/settings/ui/pages/emergency_screen.dart';
+import 'package:sugar/features/home/ui/nav_bar_pages/settings/ui/pages/meal_planning_screen.dart';
+import 'package:sugar/features/home/ui/nav_bar_pages/settings/ui/pages/meal_screen.dart';
 import 'package:sugar/features/home/ui/nav_bar_pages/settings/ui/pages/medecation_reminder_screen.dart';
 import 'package:sugar/features/home/ui/nav_bar_pages/settings/ui/pages/my_folder.dart';
 import 'package:sugar/features/home/ui/nav_bar_pages/settings/ui/pages/my_folder_culumative_screen.dart';
@@ -184,12 +187,22 @@ class AppRouter {
                           )
                         ]),
                     GoRoute(
-                      parentNavigatorKey: _rootNavigatorKey,
-                      path: AppRoutes.medicationReminder,
-                      name: AppRoutes.medicationReminder,
-                      builder: (context, state) => const MedecationReminderScreen(),
-                      pageBuilder: defaultPageBuilder(const MedecationReminderScreen()),
-                    ),
+                        parentNavigatorKey: _rootNavigatorKey,
+                        path: AppRoutes.medicationReminder,
+                        name: AppRoutes.medicationReminder,
+                        builder: (context, state) => const MedecationReminderScreen(),
+                        pageBuilder: defaultPageBuilder(const MedecationReminderScreen()),
+                        routes: []),
+                    GoRoute(parentNavigatorKey: _rootNavigatorKey, path: AppRoutes.mealPlanning, name: AppRoutes.mealPlanning, builder: (context, state) => const MealPlanningScreen(), routes: [
+                      GoRoute(
+                        parentNavigatorKey: _rootNavigatorKey,
+                        path: AppRoutes.meal,
+                        name: AppRoutes.meal,
+                        builder: (context, state) => MealScreen(
+                          meal: state.extra as Meal,
+                        ),
+                      )
+                    ]),
                   ]),
             ],
           ),

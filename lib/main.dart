@@ -107,7 +107,7 @@ class MyApp extends StatelessWidget {
               ],
               child: MaterialApp.router(
                 debugShowCheckedModeBanner: false,
-                title: 'GuROW Refactored',
+                title: 'Sugary',
                 themeMode: AppServicesDBprovider.isDark() ? ThemeMode.dark : ThemeMode.light,
                 theme: AppServicesDBprovider.isDark() ? AppTheme.darkTheme(AppServicesDBprovider.currentLocale()) : AppTheme.lightTheme(AppServicesDBprovider.currentLocale()),
                 routerConfig: AppRouter.router,

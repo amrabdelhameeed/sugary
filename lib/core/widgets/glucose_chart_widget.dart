@@ -45,7 +45,7 @@ class GlucoseChart extends StatelessWidget {
                   sideTitles: SideTitles(
                     showTitles: true,
                     reservedSize: 30,
-                    interval: calculateInterval(glucoseSpots),
+                    interval: calculateInterval(glucoseSpots) == 0 ? 10.0 : calculateInterval(glucoseSpots),
                     getTitlesWidget: (value, meta) {
                       var date = DateTime.fromMillisecondsSinceEpoch(value.toInt());
                       var formattedDate = DateFormat('hh:mm a').format(date);

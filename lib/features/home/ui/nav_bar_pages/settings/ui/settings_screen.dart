@@ -57,7 +57,9 @@ class SettingsScreen extends StatelessWidget {
               SettingsItem(
                 text: "Meal Planing",
                 icon: Image.asset(Assets.assetsAppFood),
-                onTap: () {},
+                onTap: () {
+                  context.pushNamed(AppRoutes.mealPlanning);
+                },
               ),
             ],
           )
@@ -77,6 +79,11 @@ void _showComingSoon(
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            Image.asset(
+              "assets/playstore.png",
+              width: 100.w,
+              height: 100.h,
+            ),
             Text('Coming soon', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.sp)),
             SizedBox(
               height: 30.h,
